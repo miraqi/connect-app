@@ -411,14 +411,14 @@ class ProjectWizard extends Component {
 
       // sets the appropriate project template if project category has only one project template
       if (visibleProjectTemplates.length === 1) {
-        updateQuery.templateId = { $set : visibleProjectTemplates[0].id }
+        // updateQuery.templateId = { $set : visibleProjectTemplates[0].id }
       }
     }
 
     this.setState({
       project: update(this.state.project, updateQuery),
       dirtyProject: update(this.state.project, updateQuery),
-      wizardStep: visibleProjectTemplates.length === 1 ? WZ_STEP_FILL_PROJ_DETAILS : WZ_STEP_SELECT_PROJ_TEMPLATE
+      wizardStep: WZ_STEP_SELECT_PROJ_TEMPLATE
     }, () => {
       typeof onProjectUpdate === 'function' && onProjectUpdate(this.state.dirtyProject, false)
       typeof onStepChange === 'function' && onStepChange(this.state.wizardStep, this.state.dirtyProject)
@@ -521,7 +521,7 @@ class ProjectWizard extends Component {
 
     // if project type has only one project template, move one step back to select project type step
     if (wizardStep === WZ_STEP_SELECT_PROJ_TEMPLATE && visibleProjectTemplates.length === 1) {
-      wizardStep = WZ_STEP_SELECT_PROJ_TYPE
+      // wizardStep = WZ_STEP_SELECT_PROJ_TYPE
     }
 
     // project type
